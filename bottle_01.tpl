@@ -12,5 +12,15 @@
 				%end
 			</ul>
 		</p>
+		<p>
+			<form action="/favourite_fruit" method="POST">
+				<fieldset>
+					<legend>What is your favourite fruit?</legend>
+					<input type="text" name="fruit" />
+					<br />
+					<input type="submit" value="Submit" />					
+				</fieldset>
+			</form>
+		</p>
 	</body>
 </html>
