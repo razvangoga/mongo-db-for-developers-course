@@ -6,7 +6,7 @@ import sys
 connection = pymongo.Connection("mongodb://localhost", safe=True)
 
 # get a handle to the school database
-db=connection.school
+db=connection.test
 scores = db.scores
 
 
@@ -15,10 +15,10 @@ def find():
     print "find, reporting for duty"
 
     query = {'type':'exam'}
-    selector = {'student_id':1, '_id':0}
+    cursor = {'student_id':1, '_id':0}
 
     try:
-        iter = scores.find(query, selector)
+        iter = scores.find(query, cursor)
 
     except:
         print "Unexpected error:", sys.exc_info()[0]
