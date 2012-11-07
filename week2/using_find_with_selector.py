@@ -15,10 +15,10 @@ def find():
     print "find, reporting for duty"
 
     query = {'type':'exam'}
-    cursor = {'student_id':1, '_id':0}
+    selector = {'student_id':1, '_id':0}
 
     try:
-        iter = scores.find(query, cursor)
+        iter = scores.find(query, selector)
 
     except:
         print "Unexpected error:", sys.exc_info()[0]
