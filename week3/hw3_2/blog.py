@@ -36,8 +36,8 @@ def insert_entry(title, post, tags_array, author):
     try:
         # XXX HW 3.2 Work here
         # do something with the post
-
-        print "Inserting the post"
+		posts.insert(post)
+		print "Inserting the post"
 
         # End student work
 
@@ -59,8 +59,7 @@ def blog_index():
     # XXX HW 3.2 Work Here
     # Find the last ten most recent posts, sorted from newest to oldest
 
-    cursor = [] # so this code won't crash before you add your stuff - you can remove
-       
+    cursor = posts.find().sort([('date',pymongo.DESCENDING)]).limit(10)
     
     # End Student Work
 
@@ -101,7 +100,7 @@ def show_post(permalink="notfound"):
     # XXX HW 3.2 Work here
     # find a post that has the appropriate permalink
     
-    post = None
+    post = posts.find_one({'permalink':permalink})
 
     # end student work
     if post == None:
