@@ -138,7 +138,7 @@ def post_newcomment():
     permalink = cgi.escape(permalink)
 
     # XXX HW 3.3 - Find the post that matches the permalink.
-    post = None  # Replace this line with your work.
+    post = posts.find_one({'permalink': permalink})  # Replace this line with your work.
 
     # if post not found, redirct to post not found error
     if post == None:
@@ -177,8 +177,13 @@ def post_newcomment():
             # you only update one document here by updating the one with the right permalink.
             
             # your update here.
-            print "about to update a blog post with a comment"
-            
+            #print "about to update a blog post with a comment"
+			if ('comments' not in post):
+				post['comments'] = []
+			
+				post['comments'].append(comment)
+			
+			posts.save(post)
             #print "num documents updated" + last_error['n']
         except:
             print "Could not update the collection, error"
