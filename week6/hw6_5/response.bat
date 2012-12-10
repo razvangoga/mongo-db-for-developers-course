@@ -1,0 +1,3 @@
+start d:\temp\mongodb2_2\mongod --replSet m101 --logpath "d:\temp\mongo_logs\1.log" --dbpath d:\temp\mongodb2_2\data\rs1\ --port 27017 --smallfiles
+start d:\temp\mongodb2_2\mongod --replSet m101 --logpath "d:\temp\mongo_logs\2.log" --dbpath d:\temp\mongodb2_2\data\rs2\ --port 27018 --smallfiles
+start d:\temp\mongodb2_2\mongod --replSet m101 --logpath "d:\temp\mongo_logs\3.log" --dbpath d:\temp\mongodb2_2\data\rs3\ --port 27019 --smallfiles
