@@ -232,13 +232,17 @@ def post_comment_like():
     # print "post-comment_like", permalink, comment_ordinal
     if post == None:
         bottle.redirect("/post_not_found")
-
+		
     # it all looks good. increment the ordinal (no error checking, but whatever)
     try:
-        # XXX Final exam problem 4. Work here.
+		currentCount = 0
+		
+		if('num_likes' not in post['comments'][ordinal]):
+			post['comments'][ordinal]['num_likes'] = 0
 
-        print "Incrementing the like counter"
-
+		last_error = posts.update({'_id': post['_id']},{'$set':{'comments.%i.num_likes' % ordinal : post['comments'][ordinal]['num_likes'] + 1 }}, upsert=False, manipulate=False, safe=True)
+		print last_error
+		print "Incrementing the like counter"
     except:
         print "Could not update the collection, error"
         print "Unexpected error:", sys.exc_info()[0]
